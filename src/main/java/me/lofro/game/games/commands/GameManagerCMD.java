@@ -13,7 +13,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-@CommandAlias("gManager")
+@CommandAlias("gameManager | gManager")
 @CommandPermission("admin.perm")
 public class GameManagerCMD extends BaseCommand {
 
@@ -66,7 +66,7 @@ public class GameManagerCMD extends BaseCommand {
             }
             if (itemStack != null) {
                 player.getInventory().addItem(itemStack);
-                sender.sendMessage(Strings.format(SquidGame.prefix + "&bEl jugador &3" + player.getName() + "&bha recibido el item &3" + item + "&b con éxito."));
+                sender.sendMessage(Strings.format(SquidGame.prefix + "&bEl jugador &3" + player.getName() + "&bha recibido el item &3 " + item + "&b con éxito."));
             } else {
                 sender.sendMessage(Strings.format(SquidGame.prefix + "&cEl item introducida no es válida."));
             }
