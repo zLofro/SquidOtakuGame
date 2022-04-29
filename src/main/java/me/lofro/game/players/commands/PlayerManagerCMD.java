@@ -1,10 +1,7 @@
 package me.lofro.game.players.commands;
 
 import co.aikar.commands.BaseCommand;
-import co.aikar.commands.annotation.CommandAlias;
-import co.aikar.commands.annotation.CommandCompletion;
-import co.aikar.commands.annotation.Flags;
-import co.aikar.commands.annotation.Subcommand;
+import co.aikar.commands.annotation.*;
 import me.lofro.game.SquidGame;
 import me.lofro.game.global.utils.Strings;
 import me.lofro.game.players.PlayerManager;
@@ -20,6 +17,7 @@ import me.lofro.game.players.objects.SquidPlayer;
  *
  */
 @CommandAlias("playerManager | pManager")
+@CommandPermission("admin.perm")
 public class PlayerManagerCMD extends BaseCommand {
 
     private final PlayerManager pManager;
