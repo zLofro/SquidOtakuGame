@@ -3,6 +3,7 @@ package me.lofro.game;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import me.lofro.game.global.commands.CreditsCMD;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
 import org.bukkit.Location;
@@ -80,7 +81,8 @@ public class SquidGame extends JavaPlugin {
         Bukkit.getOnlinePlayers().forEach(p -> globalListener.getHasSeenCredits().put(p.getName(), false));
 
         registerCommands(commandManager,
-                new TimerCMD()
+                new TimerCMD(),
+                new CreditsCMD()
         );
 
         Bukkit.getLogger().info(Strings.format(SquidGame.prefix + "&aEl plugin ha sido iniciado correctamente."));

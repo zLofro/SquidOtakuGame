@@ -2,6 +2,7 @@ package me.lofro.game.games.finalfight.commands;
 
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.CommandAlias;
+import co.aikar.commands.annotation.CommandCompletion;
 import co.aikar.commands.annotation.CommandPermission;
 import co.aikar.commands.annotation.Subcommand;
 import lombok.Getter;
@@ -21,9 +22,10 @@ public class FinalFightCMD extends BaseCommand {
     }
 
     @Subcommand("start")
-    public void runGame(CommandSender sender) {
+    @CommandCompletion("playerLimit")
+    public void runGame(CommandSender sender, int playerLimit) {
         if (!finalFightManager.isRunning()) {
-            finalFightManager.runGame();
+            finalFightManager.runGame(playerLimit);
 
             sender.sendMessage(Strings.format(SquidGame.prefix + "&bEl juego ha sido iniciado con éxito."));
         } else {

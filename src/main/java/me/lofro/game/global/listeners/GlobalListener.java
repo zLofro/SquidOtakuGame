@@ -398,7 +398,7 @@ public class GlobalListener implements Listener {
         var entity = e.getRightClicked();
 
         if (entity instanceof ArmorStand armorStand) {
-            if (armorStand.getEquipment().getHelmet() != null) {
+            if (armorStand.getEquipment().getHelmet() != null && armorStand.getEquipment().getHelmet().equals(CustomItems.Decoration.FOOD.get())) {
                 if (player.getInventory().contains(CustomItems.Decoration.BOTTLE.get()) || player.getInventory().contains(Material.GOLDEN_APPLE)) return;
 
                 player.getInventory().addItem(CustomItems.Decoration.BOTTLE.get());

@@ -5,9 +5,13 @@ import me.lofro.game.global.utils.Strings;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.title.Title;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public record FinalFightListener(FinalFightManager finalFightManager) implements Listener {
 
@@ -24,10 +28,14 @@ public record FinalFightListener(FinalFightManager finalFightManager) implements
         var squidPlayer = finalFightManager.playerManager().pData().getPlayer(name);
         var id = squidPlayer.getId();
 
+        finalFightManager.getEliminated().add(player);
+
+        if (finalFightManager.getEliminated().size() + 1 <= finalFightManager.getPlayerLimit()) return;
+
         Bukkit.getOnlinePlayers().forEach(p -> {
             p.playSound(p.getLocation(), "sfx.winner", 1f, 1f);
             p.showTitle(Title.title(Component.text(Strings.format("&6¡GANADOR!")), Component.text(Strings.format("&e #" + id + " " + nameKiller))));
-            p.sendMessage(Component.text(Strings.format("&eEl participante &6#" + id + " " + name + " &eha ganado los &6SQUID OTAKU GAMES.")));
+            p.sendMessage(Component.text(Strings.format("&eEl participante &6#" + id + " " + nameKiller + " &eha ganado los &6SQUID OTAKU GAMES.")));
         });
         finalFightManager.endGame();
     }
